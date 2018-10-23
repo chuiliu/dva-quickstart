@@ -43,7 +43,7 @@ class SidebarMenu extends Component {
 
     let openKeys = menus.map((menu, index) => {
       if (menu.children && menu.children.length) {
-        return menu.children.some(child => (location.pathname === child.link)) ? '' + index : null;
+        return menu.children.some(child => location.pathname === child.link) ? '' + index : null;
       }
       return null;
     }).filter(key => key !== null);
