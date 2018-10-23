@@ -2,7 +2,7 @@ const path = require("path");
 
 export default {
   // "entry": "src/pages/*.js",
-  // "theme": "./config/theme.config.js",
+  "theme": "src/config/theme.config.js",
   "extraBabelPlugins": [
     ["import", {"libraryName": "antd", "libraryDirectory": "es", "style": true}]
   ],
