@@ -2,7 +2,7 @@ const path = require("path");
 
 export default {
   // "entry": "src/pages/*.js",
-  "theme": "src/config/theme.config.js",
+  "theme": "src/config/theme.js",
   "extraBabelPlugins": [
     ["import", {"libraryName": "antd", "libraryDirectory": "es", "style": true}]
   ],
@@ -14,6 +14,7 @@ export default {
     "last 2 versions",
     "not ie < 9"
   ],
+  hash: true,
   // "proxy": {
   //   "/api": {
   //     "target": "http://jsonplaceholder.typicode.com/",

@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { Menu, Icon } from 'antd';
-import { Link } from 'dva/router';
-
-const MenuItem = Menu.Item;
+import { Layout } from 'antd';
+import HeaderMenu from './HeaderMenu';
+import styles from './Header.less';
 
 class Header extends Component {
   render() {
-    // const selectedKeys =
-
     return (
-      <div>
-        <Menu mode="horizontal" selectedKyes={""}>
-          <MenuItem key={""}></MenuItem>
-        </Menu>
-      </div>
+      <Layout.Header style={{ height: 'auto', paddingLeft: 0}}>
+        <div className={styles.logo}>LOGO</div>
+        <HeaderMenu {...this.props} />
+      </Layout.Header>
     )
   }
 }
+
+export default Header;

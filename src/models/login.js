@@ -1,4 +1,5 @@
 import { routerRedux } from 'dva/router';
+import { query } from '@/services/example';
 
 export default {
 
@@ -11,6 +12,7 @@ export default {
   effects: {
     *login({ payload }, { call, put }) {  // eslint-disable-line
       console.log(payload);
+      yield call(query, payload);
     },
 
     *logout({ payload }, { call, put }) {  // eslint-disable-line
