@@ -16,7 +16,7 @@ class BasicLayout extends Component {
             <SideBarMenu menus={sidebarMenu} />
           </Layout.Sider>
           <Layout style={{ padding: '0 0 0 1px' }}>
-            <Layout.Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+            <Layout.Content style={{ background: '#fff', padding: 0, margin: 0, minHeight: 280 }}>
               { children }
             </Layout.Content>
           </Layout>

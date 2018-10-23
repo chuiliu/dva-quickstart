@@ -9,7 +9,7 @@ class SidebarMenu extends Component {
     this.linkTo = this.linkTo.bind(this);
 
     this.state = {
-      openKeys: ['0'],
+      openKeys: [],
     }
   }
 
@@ -37,17 +37,32 @@ class SidebarMenu extends Component {
     ));
   }
 
+  componentDidMount() {
+
+    const { menus, location } = this.props;
+
+    let openKeys = menus.map((menu, index) => {
+      if (menu.children && menu.children.length) {
+        return menu.children.some(child => (location.pathname === child.link)) ? '' + index : null;
+      }
+      return null;
+    }).filter(key => key !== null);
+
+    this.setState({
+      openKeys
+    });
+  }
+
   render() {
-    const { menus, history } = this.props;
+    const { menus, location } = this.props;
 
     this.rootSubmenuKeys = Object.keys(menus);
-    // console.log(this.props);
 
     return (
       <Menu
         theme="light"
         mode="inline"
-        selectedKeys={[history.location.pathname]}
+        selectedKeys={[location.pathname]}
         openKeys={this.state.openKeys}
         onOpenChange={this.onOpenChange}
         style={{ height: '100%', borderRight: 0 }}
