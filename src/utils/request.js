@@ -48,6 +48,7 @@ function checkStatus(response) {
  */
 export default function request(url, options = {}) {
   const token = sessionStorage.getItem('token');
+  options.credentials = 'include';
   options.headers = {
     'Content-Type':'application/json',
     'Authorization': token

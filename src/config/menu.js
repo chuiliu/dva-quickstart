@@ -11,6 +11,7 @@ export const menus = [{
 export const userMenus = [{
   title: '个人信息',
   iconType: 'link',
+  link: '/user/set',
   children: [{
     title: '修改密码',
     iconType: 'link',
@@ -19,6 +20,7 @@ export const userMenus = [{
 }, {
   title: '其他',
   iconType: 'link',
+  link: '/user/others',
   children: [{
     title: '子菜单',
     iconType: 'link',
@@ -30,6 +32,7 @@ export const userMenus = [{
 export const adminMenus = [{
   title: '权限管理',
   iconType: 'tool',
+  link: '/admin/per',
   children: [{
     title: '资源管理',
     iconType: 'folder-open',
@@ -50,6 +53,7 @@ export const adminMenus = [{
 }, {
   title: '组织架构',
   iconType: 'team',
+  link: '/admin/org',
   children: [{
     title: '部门管理',
     iconType: 'usergroup-add',
@@ -62,14 +66,16 @@ export const adminMenus = [{
 }, {
   title: '参数设置',
   iconType: 'setting',
+  link: '/admin/set',
   children: [{
     title: '单位设置',
     iconType: 'link',
-    link: '/admin'
+    link: '/admin/set/dept'
   }]
 }, {
   title: '日志管理',
   iconType: 'database',
+  link: '/admin/log',
   children: [{
     title: '登录日志',
     iconType: 'login',

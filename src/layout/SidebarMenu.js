@@ -10,7 +10,7 @@ class SidebarMenu extends Component {
 
     this.state = {
       openKeys: [],
-    }
+    };
   }
 
   linkTo({ key }) {
@@ -40,32 +40,48 @@ class SidebarMenu extends Component {
   componentDidMount() {
 
     const { menus, history } = this.props;
-    // console.log(history.location.pathname)
 
-    let openKeys = menus.map((menu, index) => {
-      if (menu.children && menu.children.length) {
-        return menu.children.some(child => history.location.pathname === child.link) ? '' + index : null;
-      }
-      return null;
-    }).filter(key => key !== null);
+    // let openKeys = menus.map((menu, index) => {
+    //   if (menu.children && menu.children.length) {
+    //     return menu.children.some(child => history.location.pathname === child.link) ? '' + index : null;
+    //   }
+    //   return null;
+    // }).filter(key => key !== null);
 
-    // console.log('did mount', openKeys, history, history.location.pathname)
+    let openKeys = menus.filter(menu => (menu.children && menu.children.length && history.location.pathname.indexOf(menu.link) === 0)).map(menu => menu.link);
+
     this.setState({
       openKeys
     });
   }
 
+  // 获取所有的菜单路由
+  menuLinks = [];
+  getAllMenuLinks(menus) {
+    menus.forEach(menu => {
+      if (menu.children) {
+        this.getAllMenuLinks(menu.children);
+      } else {
+        this.menuLinks.push(menu.link);
+      }
+    })
+  }
+
   render() {
     const { menus, location } = this.props;
-    // const selectedKeys = '';  // TODO:
 
-    this.rootSubmenuKeys = Object.keys(menus);
+    this.getAllMenuLinks(menus);
+    this.rootSubmenuKeys = menus.filter(menu => menu.children && menu.children.length).map(menu => menu.link);
+
+    const selectedKeys = this.menuLinks.filter(key => location.pathname.indexOf(key) === 0);
+
+    // console.log(selectedKeys);
 
     return (
       <Menu
         theme="light"
         mode="inline"
-        selectedKeys={[location.pathname]}
+        selectedKeys={selectedKeys}
         openKeys={this.state.openKeys}
         onOpenChange={this.onOpenChange}
         style={{ height: '100%', borderRight: 0 }}
@@ -74,7 +90,8 @@ class SidebarMenu extends Component {
           (menu, index) =>
             menu.children ? (
               <Menu.SubMenu
-                key={index}
+                // key={index}
+                key={menu.link}
                 title={
                   <span>
                     { menu.iconType ? <Icon type={menu.iconType} /> : null }
@@ -86,13 +103,13 @@ class SidebarMenu extends Component {
               </Menu.SubMenu>
             ) : (
               <Menu.Item key={menu.link} onClick={this.linkTo}>
-                  { menu.iconType ? <Icon type={menu.iconType} /> : null }
-                  <span>{menu.title}</span>
+                { menu.iconType ? <Icon type={menu.iconType} /> : null }
+                <span>{menu.title}</span>
               </Menu.Item>
             )
         )}
       </Menu>
-    )
+    );
   }
 }
 

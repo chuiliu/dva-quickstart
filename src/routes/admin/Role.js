@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import { Button, Table, Pagination, Icon, Popover, Tooltip, Popconfirm } from 'antd';
 import Toolbar from '@/components/Toolbar/Toolbar';
+import RoleSearchForm from './RoleSearchForm';
 import styles from '@/styles/common.less';
 
 // TODO: 实现分页
@@ -13,10 +14,16 @@ class Role extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showSearchForm: false,
+      btnText: '查询'
+    };
+
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleDisableClick = this.handleDisableClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.toggleSearchForm = this.toggleSearchForm.bind(this);
   }
 
   operations = (
@@ -114,9 +121,9 @@ class Role extends Component {
     this.handleRedirect('/admin/per/role/edit')
   }
 
-  // 查询 TODO:
-  handleSearchClick() {
-
+  // 搜索 TODO:
+  handleSearchClick(value) {
+    console.log('search', value);
   }
 
   // 删除 TODO:
@@ -127,6 +134,15 @@ class Role extends Component {
   // 停用 TODO:
   handleDisableClick(roleId) {
     console.log(this);
+  }
+
+  // 显示/隐藏查询表单
+  toggleSearchForm() {
+    const btnText = this.state.showSearchForm ? '查询' : '隐藏';
+    this.setState({
+      showSearchForm: !this.state.showSearchForm,
+      btnText
+    });
   }
 
   // 获取数据
@@ -143,18 +159,20 @@ class Role extends Component {
 
   render() {
     const { roleList, loading } = this.props;
+    const { showSearchForm, btnText } = this.state;
 
     const isLoading = loading.effects['admin/getRoleList'];
 
-    console.log('isloading: ', isLoading);
+    // console.log('isloading: ', isLoading);
 
     return (
       <div>
         <Toolbar title="角色管理">
-          <Button icon="filter">查询</Button>
+          <Button icon="filter" onClick={this.toggleSearchForm}>{btnText}</Button>
           <Button icon="plus" onClick={this.handleAddClick}>新增</Button>
         </Toolbar>
         <div className="box-content">
+          {showSearchForm ? <RoleSearchForm onSearch={this.handleSearchClick} /> : null}
           <Table
             bordered
             columns={this.columns}
@@ -172,11 +190,8 @@ class Role extends Component {
 }
 
 function mapStateToProps({ loading, admin }) {
-  // TODO: loading状态
-  console.log(loading.modles);
   return {
     loading,
-    // loading: loading.modles.admin,
     roleList: admin.roleList
   }
 }

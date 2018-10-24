@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react';
 
-const Auth = ({ children, dispatch, token, pathname }) => {
+const AuthRoute = ({ children, dispatch, token, pathname }) => {
   if (!token && pathname !== 'login') {
     dispatch({
       type: 'login/logout'
@@ -20,4 +20,4 @@ function mapStateToProps({ login }){
   };
 }
 
-export default connect(mapStateToProps)(Auth);
+export default connect(mapStateToProps)(AuthRoute);

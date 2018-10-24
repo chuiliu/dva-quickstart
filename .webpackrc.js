@@ -1,7 +1,7 @@
 const path = require("path");
 
 export default {
-  // "entry": "src/pages/*.js",
+  "entry": "src/index.js",
   "theme": "src/config/theme.js",
   "extraBabelPlugins": [
     ["import", {"libraryName": "antd", "libraryDirectory": "es", "style": true}]
@@ -14,7 +14,25 @@ export default {
     "last 2 versions",
     "not ie < 9"
   ],
-  hash: true,
+  // "env": {
+  //   "development": {
+  //     "extraBabelPlugins": [
+  //       // "dva-hmr",
+  //       // "@babel/plugin-transform-runtime",
+  //       ["import", { "libraryName": "antd", "style": true }]
+  //     ]
+  //   },
+  //   "production": {
+  //     "extraBabelPlugins": [
+  //       // "@babel/plugin-transform-runtime",
+  //       ["import", { "libraryName": "antd", "style": true }]
+  //     ]
+  //   }
+  // },
+  "hash": true,
+  "html": {
+    "template": "./src/index.ejs"
+  }
   // "proxy": {
   //   "/api": {
   //     "target": "http://jsonplaceholder.typicode.com/",

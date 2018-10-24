@@ -18,6 +18,7 @@ let rolelist = Mock.mock({
 
 export default {
   [`GET /api/role/list`](req, res) {
+    console.log(rolelist)
     res.status(200).json({
       code: '200',
       data: rolelist,
