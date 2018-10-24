@@ -1,3 +1,30 @@
-:global {
+@import "constant";
 
+:global {
+  .box-content {
+    padding: @pri-main-padding;
+  }
+  .popover-btn-group {
+    .ant-btn+.ant-btn {
+      margin-left: 8px;
+    }
+  }
+  .table-col-operate {
+    i {
+      cursor: pointer;
+    }
+    i+i {
+      margin-left: 8px!important;
+    }
+  }
+}
+
+.iconDanger {
+  color: @pri-color-danger;
+}
+.iconSuccess {
+  color: @pri-color-success;
+}
+.iconPrimary {
+  color: @pri-color-primary;
 }

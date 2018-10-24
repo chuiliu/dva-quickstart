@@ -29,10 +29,14 @@ export const userMenus = [{
 // 侧栏：系统管理菜单
 export const adminMenus = [{
   title: '权限管理',
-  iconType: 'link',
+  iconType: 'tool',
   children: [{
-    title: '角色管理',
-    iconType: 'link',
+    title: '资源管理',
+    iconType: 'folder-open',
+    link: '/admin/per/res'
+  }, {
+    title: '角色权限',
+    iconType: 'solution',
     link: '/admin/per/role'
   }, {
     title: '二级管理员',
@@ -40,20 +44,44 @@ export const adminMenus = [{
     link: '/admin/per/sec-admin'
   }, {
     title: '系统管理员',
-    iconType: 'link',
+    iconType: 'key',
     link: '/admin/per/sys-admin'
   }]
 }, {
-  title: '组织管理',
-  iconType: 'link',
+  title: '组织架构',
+  iconType: 'team',
   children: [{
-    title: '用户管理',
-    iconType: 'link',
-    link: '/admin/org/users'
-  }, {
     title: '部门管理',
-    iconType: 'link',
+    iconType: 'usergroup-add',
     link: '/admin/org/dept'
+  }, {
+    title: '用户管理',
+    iconType: 'user',
+    link: '/admin/org/user'
+  }]
+}, {
+  title: '参数设置',
+  iconType: 'setting',
+  children: [{
+    title: '单位设置',
+    iconType: 'link',
+    link: '/admin'
+  }]
+}, {
+  title: '日志管理',
+  iconType: 'database',
+  children: [{
+    title: '登录日志',
+    iconType: 'login',
+    link: '/admin/log/login'
+  }, {
+    title: '操作日志',
+    iconType: 'info-circle',
+    link: '/admin/log/operate'
+  }, {
+    title: '异常日志',
+    iconType: 'exclamation-circle',
+    link: '/admin/log/exception'
   }]
 }];
 

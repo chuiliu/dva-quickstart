@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'dva/router';
 import { Layout } from 'antd';
 import Header from './Header';
 import SideBarMenu from './SidebarMenu';

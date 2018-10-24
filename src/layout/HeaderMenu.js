@@ -14,7 +14,7 @@ class HeaderMenu extends Component {
         theme="dark"
         mode="horizontal"
         selectedKeys={selectedKeys}
-        style={{ lineHeight: '50px', marginLeft: 200, backgroundColor: 'inherit' }}
+        style={{ lineHeight: '50px', float: 'left', backgroundColor: 'inherit' }}
       >
         {
           menus.map(menu => (

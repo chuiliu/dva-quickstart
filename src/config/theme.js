@@ -4,13 +4,18 @@
  */
 module.exports = () => {
   return {
-    'primary-color': '#2a579a',                         // 全局主色
-    'layout-header-background': '#2a579a',
+    'primary-color': '#294e77',                         // 全局主色
+    'link-color': '#0366d6',                                   // 超链接色
+    'layout-header-background': '#294e77',
     'layout-sider-background': '#fff',
     'layout-trigger-background': '#fff',
     'layout-trigger-color': 'rgba(0, 0, 0, .65)',
     // 'menu-dark-item-active-bg': '#fff',
-    'menu-item-active-bg': '#f2f2f2'
+    'menu-item-active-bg': '#f2f2f2',
+    'table-row-hover-bg': '#f2f2f2',
+    'table-padding-vertical': '8px',
+    'table-padding-horizontal': '8px',
+    // 'tabs-card-head-background': ''
 
   };
 };

@@ -39,15 +39,17 @@ class SidebarMenu extends Component {
 
   componentDidMount() {
 
-    const { menus, location } = this.props;
+    const { menus, history } = this.props;
+    // console.log(history.location.pathname)
 
     let openKeys = menus.map((menu, index) => {
       if (menu.children && menu.children.length) {
-        return menu.children.some(child => location.pathname === child.link) ? '' + index : null;
+        return menu.children.some(child => history.location.pathname === child.link) ? '' + index : null;
       }
       return null;
     }).filter(key => key !== null);
 
+    // console.log('did mount', openKeys, history, history.location.pathname)
     this.setState({
       openKeys
     });
@@ -55,6 +57,7 @@ class SidebarMenu extends Component {
 
   render() {
     const { menus, location } = this.props;
+    // const selectedKeys = '';  // TODO:
 
     this.rootSubmenuKeys = Object.keys(menus);
 
