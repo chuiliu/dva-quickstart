@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Button, Table, Pagination, Icon, Popover, Tooltip, Popconfirm } from 'antd';
+import { Button, Table, Icon, Popover, Tooltip, Popconfirm } from 'antd';
 import Toolbar from '@/components/Toolbar/Toolbar';
 import RoleSearchForm from './RoleSearchForm';
 import styles from '@/styles/common.less';
 
 // TODO: 实现分页
-// TODO: 实现loading
 
 class Role extends Component {
 
@@ -42,8 +41,8 @@ class Role extends Component {
     title: '角色名称',
     dataIndex: 'name',
     align: 'center',
-    render: (text) => (
-      <Link to="">{text}</Link>
+    render: (text, record) => (
+      <Link to={`/admin/per/role/${record.id}`}>{text}</Link>
     )
   }, {
     title: '角色编码',
@@ -154,10 +153,15 @@ class Role extends Component {
   }
 
   componentDidMount() {
-    this.fetchData();
+    const { roleList } = this.props;
+    console.log(roleList);
+    if (!roleList.length) {
+      this.fetchData();
+    }
   }
 
   render() {
+
     const { roleList, loading } = this.props;
     const { showSearchForm, btnText } = this.state;
 
@@ -178,11 +182,19 @@ class Role extends Component {
             columns={this.columns}
             dataSource={roleList}
             rowKey="id"
-            pagination={false}
+            pagination={{
+              current: 1,
+              pageSize: 5,
+              total: 100,
+              showQuickJumper: true,
+              showSizeChanger: true,
+              onChange: (page, pageSize) => {console.log(page, pageSize)},
+              onShowSizeChange: (current, size) => {console.log(current, size)}
+            }}
             loading={isLoading}
           >
           </Table>
-          { isLoading ? null : <Pagination /> }
+          {/* { isLoading ? null : <Pagination /> } */}
         </div>
       </div>
     );

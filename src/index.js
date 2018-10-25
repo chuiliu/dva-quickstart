@@ -3,7 +3,6 @@ import dva from 'dva';
 import createLoading from 'dva-loading';
 import router from './router';
 
-import './index.css';
 import '@/styles/global.less';
 
 // 1. Initialize

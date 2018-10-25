@@ -8,6 +8,8 @@ import SecAdmin from '@/routes/admin/SecAdmin';
 import SysAdmin from '@/routes/admin/SysAdmin';
 import RoleAdd from '@/routes/admin/RoleAdd';
 import RoleEdit from '@/routes/admin/RoleEdit';
+import Resource from '@/routes/admin/Resource';
+import User from '@/routes/admin/User';
 
 // test TODO:
 import RouteTabs from '@/components/RouteTabs/RouteTabs';
@@ -19,11 +21,16 @@ class AdminLayout extends Component {
       <BasicLayout sidebarMenu={adminMenus} {...this.props}>
         <RouteTabs />
         <Switch>
+          {/* 权限管理 */}
+          <Route exact path="/admin/per/res" component={Resource} />
           <Route exact path="/admin/per/role/add" component={RoleAdd} />
           <Route exact path="/admin/per/role/:id" component={RoleEdit} />
           <Route exact path="/admin/per/role" component={Role} />
           <Route exact path="/admin/per/sec-admin" component={SecAdmin} />
           <Route exact path="/admin/per/sys-admin" component={SysAdmin} />
+          {/* 组织架构 */}
+          <Route exact path="/admin/org/user" component={User} />
+          {/* 异常页面 */}
           <Route exact path="/admin/exception/403" render={()=><h1>403</h1>} />
           <Route exact path="/admin/exception/404" render={()=><h1>404</h1>} />
           <Route exact path="/admin/exception/500" render={()=><h1>500</h1>} />

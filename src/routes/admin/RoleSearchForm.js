@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, Select } from 'antd';
 
+const { Option } = Select;
+
 // 角色搜索栏
 // TODO: 状态可能需要后端获取
 class RoleSearchForm extends Component {
@@ -38,9 +40,9 @@ class RoleSearchForm extends Component {
         <Form.Item label="状态">
           {getFieldDecorator('status')(
             <Select style={{width: 80}}>
-              <Select.Option value="" key=""></Select.Option>
-              <Select.Option value="1" key="1">正常</Select.Option>
-              <Select.Option value="0" key="0">停用</Select.Option>
+              <Option value="" key=""></Option>
+              <Option value="1" key="1">正常</Option>
+              <Option value="0" key="0">停用</Option>
             </Select>
           )}
         </Form.Item>

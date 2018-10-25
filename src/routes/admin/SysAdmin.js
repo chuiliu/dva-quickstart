@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-// import { connect } from 'dva';
-
+import { connect } from 'dva';
+import Toolbar from '@/components/Toolbar/Toolbar';
 class SysAdmin extends Component {
 
   render() {
     return (
-      <div>系统管理</div>
+      <div>
+        <Toolbar title="系统管理员"></Toolbar>
+        <div className="box-content"></div>
+      </div>
     );
   }
 }
 
-export default SysAdmin;
+export default connect()(SysAdmin);
+
